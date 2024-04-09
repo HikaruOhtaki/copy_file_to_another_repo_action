@@ -16,7 +16,7 @@ cd $CLONE_DIR
 
 git switch -c $INPUT_DESTINATION_BRANCH
 
-if git ls-remote | grep -q "feature/update-event"; then
+if git ls-remote | grep -q $INPUT_DESTINATION_BRANCH; then
   echo "Destination branch already exists."
   git config pull.rebase false
   git pull origin $INPUT_DESTINATION_BRANCH
