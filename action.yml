@@ -1,0 +1,31 @@
+name: 'Push a file to another repository'
+description: 'Used for pushing a copy of a file to another repository'
+inputs:
+  source_file:
+    description: 'Source file from the origin directory'
+    required: true
+  destination_repo:
+    description: 'Destination repository'
+    required: true
+  destination_folder:
+    description: 'Directory to push the file to'
+    required: true
+  destination_branch:
+    description: 'Branch to push file to, defaults to main'
+    required: true
+  commit_message:
+    description: 'Custom message for the commit'
+    required: false
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.source-file }}
+    - ${{ inputs.destination-repo }}
+    - ${{ inputs.destination-folder }}
+    - ${{ inputs.destination-branch }}
+    - ${{ inputs.commit-message }}
+branding:
+  icon: 'git-commit'
+  color: 'green'
